@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             val objConexion=ClaseConexion().cadenaConexion()
 
             val statement = objConexion?.createStatement()
-            val resultSet=statement?.executeQuery("select * from TBAbogados")!!
+            val resultSet=statement?.executeQuery("Select * from TBAbogados")!!
 
 
             val abogados = mutableListOf<DataClassAbogados>()
@@ -98,10 +98,12 @@ class MainActivity : AppCompatActivity() {
                 addProducto.setString(1, UUID.randomUUID().toString())
                 addProducto.setString(2,txtNombre.text.toString())
                 addProducto.setInt(3,txtEdad.text.toString().toInt())
-                addProducto.setDouble(5,txtPeso.text.toString().toDouble())
-                addProducto.setString(4,txtCorreo.text.toString())
+                addProducto.setDouble(4,txtPeso.text.toString().toDouble())
+                addProducto.setString(5,txtCorreo.text.toString())
                 addProducto.executeUpdate()
-
+                val commit=claseConexion.prepareStatement("commit")
+                commit.executeUpdate()
+                
                 val nuevosabogado=obtenerDatos()
 
                 withContext(Dispatchers.Main){

@@ -41,7 +41,7 @@ class Adaptador(private var Datos: List<DataClassAbogados>) : RecyclerView.Adapt
             val objConexion = ClaseConexion().cadenaConexion()
 
             //variable que contenga prepared sttement
-            val updateAbogados = objConexion?.prepareStatement("update TbAbogados set Nombre_Abogados = ? where uuid_abogado = ?")!!
+            val updateAbogados = objConexion?.prepareStatement("update TbAbogados set Nombre_Abogado = ? where uuid_abogado = ?")!!
 
             updateAbogados.setString(1,Nombre_Abogado)
             updateAbogados.setString(2,uuid)
